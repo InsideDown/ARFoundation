@@ -11,37 +11,20 @@ public class EventManager : Singleton<EventManager>
     public static event ScreenNavigateAction OnLoadNewScene;
     public static event ScreenNavigateAction OnSceneLoad;
 
-    public delegate void VideoAction();
-    public static event VideoAction OnVideoClose;
+    public delegate void GlobalClickAction();
+    public static event GlobalClickAction OnGlobalClick;
 
-    public delegate void ScreenClickAction();
-    public static event ScreenClickAction OnScreenClick;
-
-    public delegate void AudioAction();
-    public static event AudioAction OnAudioEnd;
 
 
     public void LoadNewScene(string newScreen = "")
     {
-        if (OnLoadNewScene != null)
-            OnLoadNewScene(newScreen);
+        OnLoadNewScene?.Invoke(newScreen);
     }
 
-    public void VideoClose()
+    public void GlobalClick()
     {
-        if (OnVideoClose != null)
-            OnVideoClose();
+        OnGlobalClick?.Invoke();
     }
 
-    public void ScreenClick()
-    {
-        if (OnScreenClick != null)
-            OnScreenClick();
-    }
-
-    public void AudioEnd()
-    {
-        if (OnAudioEnd != null)
-            OnAudioEnd();
-    }
+    
 }

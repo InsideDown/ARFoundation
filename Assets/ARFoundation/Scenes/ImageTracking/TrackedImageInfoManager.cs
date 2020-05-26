@@ -87,6 +87,10 @@ public class TrackedImageInfoManager : MonoBehaviour
             // Set the texture
             var material = planeGo.GetComponentInChildren<MeshRenderer>().material;
             material.mainTexture = (trackedImage.referenceImage.texture == null) ? defaultTexture : trackedImage.referenceImage.texture;
+
+            DebugTxt.Instance.SetTxt("---\n" + trackedImage.transform.position.ToString());
+            DebugTxt.Instance.AddTxt(trackedImage.transform.rotation.ToString());
+            DebugTxt.Instance.AddTxt(trackedImage.transform.localScale.ToString());
         }
         else
         {

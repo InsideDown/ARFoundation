@@ -45,3 +45,23 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: QRCode
     m_Texture: {fileID: 2800000, guid: a6fd8503774c0402aa403884f5b77f39, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5219672550696043272
+      m_GuidHigh: 10834376328030671772
+    m_SerializedTextureGuid:
+      m_GuidLow: 3758099591072312666
+      m_GuidHigh: 2364042390752633849
+    m_Size: {x: 0.11630847, y: 0.2}
+    m_SpecifySize: 1
+    m_Name: astronaut
+    m_Texture: {fileID: 2800000, guid: b467ed5a73aa3427f9a3c67607c4ce20, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5445012804001557280
+      m_GuidHigh: 15333941336725643451
+    m_SerializedTextureGuid:
+      m_GuidLow: 2648409744908281119
+      m_GuidHigh: 3614167893908328584
+    m_Size: {x: 0.11630847, y: 0.2}
+    m_SpecifySize: 1
+    m_Name: drone
+    m_Texture: {fileID: 2800000, guid: 90f0e51f0aa124c1881007038d1a2832, type: 3}

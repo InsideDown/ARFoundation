@@ -12,28 +12,36 @@ public class SceneLoadController : MonoBehaviour
 
     private void Awake()
 	{
-		if (AlphaGameObject == null)
-			throw new System.Exception("An AlphaGameObject must be defined in IntroScreenController");
-
-        AlphaGameObject.SetActive(true);
+        if (AlphaGameObject != null)
+            AlphaGameObject.SetActive(true);
 	}
 
     private IEnumerator Start()
 	{
-		AlphaMaterial = AlphaGameObject.GetComponent<Renderer>().material;
+        if (AlphaGameObject != null)
+            AlphaMaterial = AlphaGameObject.GetComponent<Renderer>().material;
+
         yield return new WaitForSeconds(0.2f);
         FadeSceneIn();
 	}
 
     private void FadeSceneIn()
 	{
-		AlphaMaterial.DOFade(0, 1).OnComplete(()=> AlphaGameObject.SetActive(false));
+        if(AlphaMaterial != null)
+		    AlphaMaterial.DOFade(0, 1).OnComplete(()=> AlphaGameObject.SetActive(false));
 	}
 
     private void FadeSceneOut(string newScene)
     {
-        AlphaGameObject.SetActive(true);
-        AlphaMaterial.DOFade(1, 1).OnComplete(()=> LoadNewScene(newScene));
+        if (AlphaGameObject != null)
+        {
+            AlphaGameObject.SetActive(true);
+            AlphaMaterial.DOFade(1, 1).OnComplete(() => LoadNewScene(newScene));
+        }
+        else
+        {
+            LoadNewScene(newScene);
+        }
     }
 
     private void LoadNewScene(string newScene)
