@@ -6,7 +6,12 @@ public class BtnSceneSwitch : MonoBehaviour
 {
     public void OnClick(string sceneName)
     {
-        if(sceneName != null)
+        if (!string.IsNullOrEmpty(sceneName))
+        {
             EventManager.Instance.LoadNewScene(sceneName);
+        }else
+        {
+            throw new System.Exception("sceneName is not defined in BtnSceneSwitch");
+        }
     }
 }

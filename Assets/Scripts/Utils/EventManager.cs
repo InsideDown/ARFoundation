@@ -16,6 +16,7 @@ public class EventManager : Singleton<EventManager>
 
     public delegate void ARAction();
     public static event ARAction OnARPlacementAllowed;
+    public static event ARAction OnARObjectPlaced;
 
 
 
@@ -32,6 +33,11 @@ public class EventManager : Singleton<EventManager>
     public void ARPlacementAllowed()
     {
         OnARPlacementAllowed?.Invoke();
+    }
+
+    public void ARObjectPlaced()
+    {
+        OnARObjectPlaced?.Invoke();
     }
     
 }
