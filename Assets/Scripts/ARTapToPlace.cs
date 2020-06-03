@@ -14,6 +14,8 @@ public class ARTapToPlace : MonoBehaviour
     private ARSessionOrigin _AROrigin;
     private Pose _PlacementPose;
     private bool _PlacementPoseIsValid;
+    //have we let AR know we can place yet?
+    private bool _ARPlaceTriggered = false;
 
     private void Awake()
     {
@@ -61,6 +63,12 @@ public class ARTapToPlace : MonoBehaviour
         _AROrigin.GetComponent<ARRaycastManager>().Raycast(screenCenter, hits, UnityEngine.XR.ARSubsystems.TrackableType.Planes);
 
         _PlacementPoseIsValid = hits.Count > 0;
+        if(_PlacementPoseIsValid && _ARPlaceTriggered)
+        {
+            _ARPlaceTriggered = true;
+            EventManager.Instance.ARPlacementAllowed();
+        }
+        
         if (_PlacementPoseIsValid)
         {
             _PlacementPose = hits[0].pose;

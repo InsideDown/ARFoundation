@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/LaunchScreen.unity
+    guid: 043a395370ee5421f89b74a38a9e2f40
+  - enabled: 1
+    path: Assets/Scenes/ARPlace.unity
+    guid: 23533d504f84a404e87814d6b0f7ee7e
+  - enabled: 1
     path: Assets/Scenes/ARFoundation-Launch.unity
     guid: c1664d91ce67e48b6b8a19f3a30b2cb9
   - enabled: 0
@@ -104,9 +110,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ARFoundation/Scenes/UX/SampleUXScene.unity
     guid: 3b42d67a72bbc4004bf713db0e312326
-  - enabled: 1
-    path: Assets/Scenes/ARPlace.unity
-    guid: 23533d504f84a404e87814d6b0f7ee7e
   m_configObjects:
     com.unity.xr.arkit.PlayerSettings: {fileID: 11400000, guid: 2d5fb8e61571b4e3897f221189089fd6,
       type: 2}

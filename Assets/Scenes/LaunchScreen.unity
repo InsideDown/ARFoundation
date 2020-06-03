@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 494336695}
   - component: {fileID: 494336694}
   - component: {fileID: 494336693}
+  - component: {fileID: 494336696}
   m_Layer: 5
   m_Name: BtnVRTour
   m_TagString: Untagged
@@ -203,7 +204,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 494336694}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 586761655}
+        m_MethodName: OnVRTourClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &494336694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +253,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494336691}
   m_CullTransparentMesh: 0
+--- !u!225 &494336696
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494336691}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!1 &586761653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586761654}
+  - component: {fileID: 586761655}
+  m_Layer: 0
+  m_Name: LaunchSceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586761654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586761653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &586761655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586761653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500f1754be506474f8eff77a5d1f5c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BarsCanvasGroup: {fileID: 863890025}
+  ArtsLogoCanvas: {fileID: 1157910152}
+  BtnARTourCanvas: {fileID: 713942730}
+  BtnVRTourCanvas: {fileID: 494336696}
+  AnimDelay: 0.2
+  ARSceneName: ARPlace
+  VRSceneName: 
 --- !u!1 &713942725
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +327,7 @@ GameObject:
   - component: {fileID: 713942729}
   - component: {fileID: 713942728}
   - component: {fileID: 713942727}
+  - component: {fileID: 713942730}
   m_Layer: 5
   m_Name: BtnARTour
   m_TagString: Untagged
@@ -323,7 +398,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 713942728}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 586761655}
+        m_MethodName: OnARTourClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &713942728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +447,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713942725}
   m_CullTransparentMesh: 0
+--- !u!225 &713942730
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713942725}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &831711902
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +555,7 @@ RectTransform:
   - {fileID: 713942726}
   - {fileID: 494336692}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -475,6 +573,7 @@ GameObject:
   - component: {fileID: 863890022}
   - component: {fileID: 863890024}
   - component: {fileID: 863890023}
+  - component: {fileID: 863890025}
   m_Layer: 5
   m_Name: CornerImage
   m_TagString: Untagged
@@ -535,6 +634,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 863890021}
   m_CullTransparentMesh: 0
+--- !u!225 &863890025
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863890021}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &926690663
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,6 +884,7 @@ GameObject:
   - component: {fileID: 1157910149}
   - component: {fileID: 1157910151}
   - component: {fileID: 1157910150}
+  - component: {fileID: 1157910152}
   m_Layer: 5
   m_Name: LogoLawrenceImage
   m_TagString: Untagged
@@ -833,6 +945,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157910148}
   m_CullTransparentMesh: 0
+--- !u!225 &1157910152
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157910148}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1299708883
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +1021,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1417398275
 GameObject:
@@ -989,7 +1113,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1790973537
 GameObject:
@@ -1299,7 +1423,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2097320886
 GameObject:

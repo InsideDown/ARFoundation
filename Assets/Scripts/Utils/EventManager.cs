@@ -14,6 +14,9 @@ public class EventManager : Singleton<EventManager>
     public delegate void GlobalClickAction();
     public static event GlobalClickAction OnGlobalClick;
 
+    public delegate void ARAction();
+    public static event ARAction OnARPlacementAllowed;
+
 
 
     public void LoadNewScene(string newScreen = "")
@@ -26,5 +29,9 @@ public class EventManager : Singleton<EventManager>
         OnGlobalClick?.Invoke();
     }
 
+    public void ARPlacementAllowed()
+    {
+        OnARPlacementAllowed?.Invoke();
+    }
     
 }
