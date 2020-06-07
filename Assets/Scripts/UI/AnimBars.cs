@@ -26,17 +26,24 @@ public class AnimBars : MonoBehaviour
     }
 
 
-    private void AnimIn(GameObject barObject = null)
+    private void AnimIn(GameObject barObject = null, float scaleSize = 1.0f)
     {
         if (barObject != null)
         {
-            float ranSeconds = Random.Range(0, 1f);
-            barObject.transform.DOScale(1, AnimSpeed).SetEase(Ease.OutBack).SetDelay(ranSeconds);
-         
+            float ranSeconds = Random.Range(1f, 2f);
+            float newScaleSize = Random.Range(0.4f, 0.8f);
 
-            //HoverIcon.transform.DOScale(_EndingHoverIconScale, _AnimSpeed).SetEase(Ease.OutBack).SetDelay(0.2f);
+            if (scaleSize != 1.0f)
+            {
+                scaleSize = newScaleSize;
+                newScaleSize = 1.0f;
+            }
+            else
+            {
+                scaleSize = 1.0f;
+            }
 
-            //AlphaMaterial.DOFade(0, 1).OnComplete(() => AlphaGameObject.SetActive(false));
+            barObject.transform.DOScaleX(scaleSize, AnimSpeed).SetEase(Ease.OutBack).SetDelay(ranSeconds).OnComplete(() => AnimIn(barObject,newScaleSize));
         }
     }
 }
