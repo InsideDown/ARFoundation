@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FPOVR.unity
+    guid: c5ba24cf4c024400dbbad5cff85ad924
+  - enabled: 1
     path: Assets/Scenes/LaunchScreen.unity
     guid: 043a395370ee5421f89b74a38a9e2f40
   - enabled: 1
