@@ -9,6 +9,15 @@ public class VRInteractible : MonoBehaviour
 
     public UnityEvent OnPointerEnter;
     public UnityEvent OnPointerExit;
+    public UnityEvent OnPointerClick;
+
+    protected virtual void Awake()
+    {
+        if (this.gameObject.GetComponent<Collider>() == null)
+        {
+            throw new System.Exception("A collider must be attached to an VRInteractible");
+        }
+    }
 
     public void TestEnter()
     {
@@ -19,5 +28,10 @@ public class VRInteractible : MonoBehaviour
     {
         Debug.Log("exit from test exit");
     }
-    
+
+    public void TestClick()
+    {
+        Debug.Log("triggered click");
+    }
+
 }

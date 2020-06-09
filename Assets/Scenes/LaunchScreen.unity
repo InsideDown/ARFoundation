@@ -681,7 +681,7 @@ MonoBehaviour:
   BtnVRTourCanvas: {fileID: 494336696}
   AnimDelay: 0.2
   ARSceneName: ARPlace
-  VRSceneName: 
+  VRSceneName: FPOVR
 --- !u!1 &713942725
 GameObject:
   m_ObjectHideFlags: 0

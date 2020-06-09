@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,13 @@ public class VRReticle : MonoBehaviour
     public LayerMask Mask;
     public RawImage ReticleNormal;
     public RawImage ReticleHover;
+    public float AnimScaleSpeed = 0.4f;
 
     private Transform _CurHit = null;
+    private Vector3 _MinReticleScale = new Vector3(0.3f, 0.3f, 0.3f);
+    private Vector3 _MaxNormalReticleScale = Vector3.one;
+    private Vector3 _MaxHoverReticleScale = new Vector3(1.4f, 1.4f, 1.4f); 
+    
 
     private void Awake()
     {
@@ -22,25 +28,43 @@ public class VRReticle : MonoBehaviour
         if (ReticleHover == null)
             throw new System.Exception("A ReticleHover must be defined in VRReticle");
 
-        AnimOff();
+        ReticleNormal.gameObject.SetActive(true);
+        ReticleHover.gameObject.SetActive(false);
 
+    }
+
+    private void KillTweens()
+    {
+        DOTween.Kill(ReticleNormal);
+        DOTween.Kill(ReticleHover);
     }
 
     private void AnimOff(Transform hitObj = null)
     {
         if(hitObj != null)
         {
+            KillTweens();
             ReticleNormal.gameObject.SetActive(true);
-            ReticleHover.gameObject.SetActive(false);
+
+            ReticleNormal.transform.localScale = Vector3.zero;
+            ReticleNormal.transform.DOScale(_MaxNormalReticleScale, AnimScaleSpeed).SetEase(Ease.OutBack).SetDelay(AnimScaleSpeed/2);
+
+            ReticleHover.transform.DOScale(_MinReticleScale, AnimScaleSpeed).SetEase(Ease.InBack).OnComplete(() => ReticleHover.gameObject.SetActive(false)); ;
         }
     }
 
     private void AnimOn(Transform hitObj)
     {
+        KillTweens();
         ReticleNormal.gameObject.SetActive(false);
         ReticleHover.gameObject.SetActive(true);
 
-        if(hitObj.GetComponent<VRInteractible>() != null)
+        ReticleHover.transform.localScale = _MinReticleScale;
+        ReticleHover.transform.DOScale(_MaxHoverReticleScale, AnimScaleSpeed).SetEase(Ease.OutBack);
+
+
+        //check to make sure we're an interactible and trigger pointer stuff
+        if (hitObj.GetComponent<VRInteractible>() != null)
         {
             VRInteractible curVRInteractible = hitObj.GetComponent<VRInteractible>();
             curVRInteractible.OnPointerEnter.Invoke();
@@ -55,7 +79,7 @@ public class VRReticle : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 500, Mask))
         {
-            if(_CurHit != hit.transform)
+            if (_CurHit != hit.transform)
             {
                 _CurHit = hit.transform;
                 //here is where we need to trigger an action in the item we rolled over
@@ -65,13 +89,36 @@ public class VRReticle : MonoBehaviour
         }
         else
         {
-            if(_CurHit != null)
+            if (_CurHit != null)
             {
                 //we're going to have to change how off is called, because you might roll onto something and never hit null
                 AnimOff(_CurHit);
+                if(_CurHit.GetComponent<VRInteractible>() != null)
+                {
+                    VRInteractible curVRInteractible = _CurHit.GetComponent<VRInteractible>();
+                    curVRInteractible.OnPointerExit.Invoke();
+                }
                 _CurHit = null;
                 Debug.Log("trigger rollout action");
             }
         }
+
+        //listen for clicks
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (_CurHit != null)
+            {
+                if(_CurHit.GetComponent<VRInteractible>() != null)
+                {
+                    VRInteractible curVRInteractible = _CurHit.GetComponent<VRInteractible>();
+                    curVRInteractible.OnPointerClick.Invoke();
+                }
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        KillTweens();
     }
 }
