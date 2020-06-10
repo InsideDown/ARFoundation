@@ -563,6 +563,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: VRHotspotScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 7002537717073326826, guid: de92572bcfd224361b0bbc50a65951bc,
+        type: 3}
+      propertyPath: OnPointerClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002537717073326826, guid: de92572bcfd224361b0bbc50a65951bc,
+        type: 3}
+      propertyPath: OnPointerClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002537717073326826, guid: de92572bcfd224361b0bbc50a65951bc,
+        type: 3}
+      propertyPath: OnPointerClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002537717073326826, guid: de92572bcfd224361b0bbc50a65951bc,
+        type: 3}
+      propertyPath: OnPointerClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 958071196}
+    - target: {fileID: 7002537717073326826, guid: de92572bcfd224361b0bbc50a65951bc,
+        type: 3}
+      propertyPath: OnPointerClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenUIScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002537717073326826, guid: de92572bcfd224361b0bbc50a65951bc,
+        type: 3}
+      propertyPath: OnPointerClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7002537717073326827, guid: de92572bcfd224361b0bbc50a65951bc,
         type: 3}
       propertyPath: m_LocalPosition.x
