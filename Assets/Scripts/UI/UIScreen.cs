@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class UIScreen : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public void OnCloseClick()
     {
-        
+        EventManager.Instance.UIScreenClose();
     }
 
-    // Update is called once per frame
-    void Update()
+    //remove ourselves from our parent, any other cleanup we need to do
+    public void UnInit()
     {
-        
+        Destroy(this);
     }
 }

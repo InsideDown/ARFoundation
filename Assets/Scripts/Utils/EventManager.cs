@@ -9,7 +9,9 @@ public class EventManager : Singleton<EventManager>
 
     public delegate void ScreenNavigateAction(string newScene);
     public static event ScreenNavigateAction OnLoadNewScene;
-    public static event ScreenNavigateAction OnSceneLoad;
+    //whenever one of our 2d screens are open
+    public static event ScreenNavigateAction OnUIScreenOpen;
+    public static event ScreenNavigateAction OnUIScreenClose;
 
     public delegate void GlobalClickAction();
     public static event GlobalClickAction OnGlobalClick;
@@ -23,6 +25,16 @@ public class EventManager : Singleton<EventManager>
     public void LoadNewScene(string newScreen = "")
     {
         OnLoadNewScene?.Invoke(newScreen);
+    }
+
+    public void UIScreenOpen(string newScreen = "")
+    {
+        OnUIScreenOpen?.Invoke(newScreen);
+    }
+
+    public void UIScreenClose(string newScreen = "")
+    {
+        OnUIScreenClose?.Invoke(newScreen);
     }
 
     public void GlobalClick()
@@ -39,5 +51,4 @@ public class EventManager : Singleton<EventManager>
     {
         OnARObjectPlaced?.Invoke();
     }
-    
 }

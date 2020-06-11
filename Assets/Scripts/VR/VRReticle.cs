@@ -16,8 +16,8 @@ public class VRReticle : MonoBehaviour
     private Transform _CurHit = null;
     private Vector3 _MinReticleScale = new Vector3(0.3f, 0.3f, 0.3f);
     private Vector3 _MaxNormalReticleScale = Vector3.one;
-    private Vector3 _MaxHoverReticleScale = new Vector3(1.4f, 1.4f, 1.4f); 
-    
+    private Vector3 _MaxHoverReticleScale = new Vector3(1.4f, 1.4f, 1.4f);
+    private bool _IsReticleEnabled = true;
 
     private void Awake()
     {
@@ -30,13 +30,6 @@ public class VRReticle : MonoBehaviour
 
         ReticleNormal.gameObject.SetActive(true);
         ReticleHover.gameObject.SetActive(false);
-
-    }
-
-    private void KillTweens()
-    {
-        DOTween.Kill(ReticleNormal);
-        DOTween.Kill(ReticleHover);
     }
 
     private void AnimOff(Transform hitObj = null)
@@ -74,47 +67,88 @@ public class VRReticle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Ray ray = ReticleCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 500, Mask))
+        if (_IsReticleEnabled)
         {
-            if (_CurHit != hit.transform)
+            Ray ray = ReticleCamera.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 500, Mask))
             {
-                _CurHit = hit.transform;
-                //here is where we need to trigger an action in the item we rolled over
-                Debug.Log("trigger rollover action");
-                AnimOn(_CurHit);
-            }
-        }
-        else
-        {
-            if (_CurHit != null)
-            {
-                //we're going to have to change how off is called, because you might roll onto something and never hit null
-                AnimOff(_CurHit);
-                if(_CurHit.GetComponent<VRInteractible>() != null)
+                if (_CurHit != hit.transform)
                 {
-                    VRInteractible curVRInteractible = _CurHit.GetComponent<VRInteractible>();
-                    curVRInteractible.OnPointerExit.Invoke();
-                }
-                _CurHit = null;
-                Debug.Log("trigger rollout action");
-            }
-        }
-
-        //listen for clicks
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (_CurHit != null)
-            {
-                if(_CurHit.GetComponent<VRInteractible>() != null)
-                {
-                    VRInteractible curVRInteractible = _CurHit.GetComponent<VRInteractible>();
-                    curVRInteractible.OnPointerClick.Invoke();
+                    _CurHit = hit.transform;
+                    AnimOn(_CurHit);
                 }
             }
+            else
+            {
+                if (_CurHit != null)
+                {
+                    //TODO: we're going to have to change how off is called, because you might roll onto something and never hit null
+                    AnimOff(_CurHit);
+                    if (_CurHit.GetComponent<VRInteractible>() != null)
+                    {
+                        VRInteractible curVRInteractible = _CurHit.GetComponent<VRInteractible>();
+                        curVRInteractible.OnPointerExit.Invoke();
+                    }
+                    _CurHit = null;
+                }
+            }
+
+            //listen for clicks
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (_CurHit != null)
+                {
+                    if (_CurHit.GetComponent<VRInteractible>() != null)
+                    {
+                        VRInteractible curVRInteractible = _CurHit.GetComponent<VRInteractible>();
+                        curVRInteractible.OnPointerClick.Invoke();
+                    }
+                }
+            }
         }
+    }
+
+    private void EnableReticle()
+    {
+        _IsReticleEnabled = true;
+    }
+
+    private void DisableReticle()
+    {
+        _IsReticleEnabled = false;
+    }
+
+    //****************
+    // EVENTS
+    //****************
+
+    private void OnEnable()
+    {
+        EventManager.OnUIScreenOpen += EventManager_OnUIScreenOpen;
+        EventManager.OnUIScreenClose += EventManager_OnUIScreenClose;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnUIScreenOpen -= EventManager_OnUIScreenOpen;
+        EventManager.OnUIScreenClose -= EventManager_OnUIScreenClose;
+    }
+
+    private void EventManager_OnUIScreenOpen(string newScene)
+    {
+        DisableReticle();
+    }
+
+    private void EventManager_OnUIScreenClose(string newScene)
+    {
+        EnableReticle();
+    }
+
+    private void KillTweens()
+    {
+        DOTween.Kill(ReticleNormal);
+        DOTween.Kill(ReticleHover);
     }
 
     private void OnDestroy()

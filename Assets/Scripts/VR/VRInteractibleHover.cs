@@ -32,6 +32,7 @@ public class VRInteractibleHover : VRInteractible
             IconTxtCanvas.alpha = 0;
 
         _StartBackgroundScale = HoverBackgroundObject.transform.localScale;
+        _EndIconScale = HoverIcon.transform.localScale;
         HoverIcon.transform.localScale = _StartIconScale;
                 
     }
@@ -68,6 +69,8 @@ public class VRInteractibleHover : VRInteractible
     {
         DOTween.Kill(HoverIcon.transform);
         DOTween.Kill(HoverBackgroundObject.transform);
+        if (IconTxtCanvas != null)
+            DOTween.Kill(IconTxtCanvas.alpha);
     }
 
     private void OnDestroy()
