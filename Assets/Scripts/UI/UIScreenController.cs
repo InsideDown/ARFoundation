@@ -61,16 +61,23 @@ public class UIScreenController : MonoBehaviour
 
     private void AnimUIScreenOut()
     {
+        Debug.Log("closing UI Screen");
         float rectWidth = _UIScreenHolderRectTransform.rect.width;
         if (_CurUIScreen.GetComponent<RectTransform>() != null)
         {
             RectTransform curRect = _CurUIScreen.GetComponent<RectTransform>();
-            curRect.transform.DOMoveX(rectWidth, _AnimInSpeed).SetEase(Ease.OutQuad).OnComplete(() => _CurUIScreen.UnInit());
+            curRect.transform.DOMoveX(rectWidth, _AnimInSpeed).SetEase(Ease.OutQuad).OnComplete(() => UIScreenCloseComplete());
         }
         else
         {
             throw new System.Exception("RectTransforms are not defined in UIScreenController");
         }
+    }
+
+    private void UIScreenCloseComplete()
+    {
+        _CurUIScreen.UnInit();
+        EventManager.Instance.UIScreenCloseComplete();
     }
 
     //*************

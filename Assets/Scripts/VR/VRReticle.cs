@@ -126,14 +126,14 @@ public class VRReticle : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnUIScreenOpen += EventManager_OnUIScreenOpen;
-        EventManager.OnUIScreenClose += EventManager_OnUIScreenClose;
+        EventManager.OnUIScreenCloseComplete += EventManager_OnUIScreenCloseComplete;
         EventManager.OnLoadNewScene += EventManager_OnLoadNewScene;
     }
 
     private void OnDisable()
     {
         EventManager.OnUIScreenOpen -= EventManager_OnUIScreenOpen;
-        EventManager.OnUIScreenClose -= EventManager_OnUIScreenClose;
+        EventManager.OnUIScreenCloseComplete -= EventManager_OnUIScreenCloseComplete;
         EventManager.OnLoadNewScene -= EventManager_OnLoadNewScene;
     }
 
@@ -147,7 +147,7 @@ public class VRReticle : MonoBehaviour
         DisableReticle();
     }
 
-    private void EventManager_OnUIScreenClose(string newScene)
+    private void EventManager_OnUIScreenCloseComplete(string newScene)
     {
         EnableReticle();
     }

@@ -12,6 +12,7 @@ public class EventManager : Singleton<EventManager>
     //whenever one of our 2d screens are open
     public static event ScreenNavigateAction OnUIScreenOpen;
     public static event ScreenNavigateAction OnUIScreenClose;
+    public static event ScreenNavigateAction OnUIScreenCloseComplete;
 
     public delegate void GlobalClickAction();
     public static event GlobalClickAction OnGlobalClick;
@@ -35,6 +36,11 @@ public class EventManager : Singleton<EventManager>
     public void UIScreenClose(string newScreen = "")
     {
         OnUIScreenClose?.Invoke(newScreen);
+    }
+
+    public void UIScreenCloseComplete(string newScreen = "")
+    {
+        OnUIScreenCloseComplete?.Invoke(newScreen);
     }
 
     public void GlobalClick()
