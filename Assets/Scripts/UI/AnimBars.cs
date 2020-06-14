@@ -46,4 +46,14 @@ public class AnimBars : MonoBehaviour
             barObject.transform.DOScaleX(scaleSize, AnimSpeed).SetEase(Ease.OutBack).SetDelay(ranSeconds).OnComplete(() => AnimIn(barObject,newScaleSize));
         }
     }
+
+    private void OnDestroy()
+    {
+        foreach (Transform bar in this.gameObject.transform)
+        {
+            DOTween.Kill(bar.gameObject.transform);
+        }
+    }
 }
+
+
