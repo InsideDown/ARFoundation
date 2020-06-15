@@ -8,26 +8,41 @@ public class AR3DTouchManager : MonoBehaviour
     public string ItemClickedStr;
     public UnityEvent MethodToInvoke;
 
+    private bool _IsAR = true;
+
+    private void Awake()
+    {
+        if(this.gameObject.GetComponent<VRInteractible>())
+        {
+            VRInteractible curInteractible = this.gameObject.GetComponent<VRInteractible>();
+            if (curInteractible.IsVR)
+                _IsAR = false;
+        }
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (_IsAR)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider != null && this.gameObject == hit.transform.gameObject)
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    Debug.Log("you clicked: " + ItemClickedStr);
-                    if (MethodToInvoke != null)
+                    if (hit.collider != null && this.gameObject == hit.transform.gameObject)
                     {
-                        Debug.Log("invoking method");
-                        MethodToInvoke.Invoke();
-                    }
-                    else
-                    {
-                        Debug.LogWarning("You clicked " + this.gameObject.name + "and its AR3DTouchManager component has no MethodToInvoke set");
+                        Debug.Log("you clicked: " + ItemClickedStr);
+                        if (MethodToInvoke != null)
+                        {
+                            Debug.Log("invoking method");
+                            MethodToInvoke.Invoke();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("You clicked " + this.gameObject.name + "and its AR3DTouchManager component has no MethodToInvoke set");
+                        }
                     }
                 }
             }

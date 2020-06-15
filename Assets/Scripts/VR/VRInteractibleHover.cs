@@ -28,13 +28,20 @@ public class VRInteractibleHover : VRInteractible
         if (HoverIcon == null)
             throw new System.Exception("A Hover HoverIcon must be defined on VRInteractibleHover");
 
-        if (IconTxtCanvas != null)
-            IconTxtCanvas.alpha = 0;
-
         _StartBackgroundScale = HoverBackgroundObject.transform.localScale;
         _EndIconScale = HoverIcon.transform.localScale;
-        HoverIcon.transform.localScale = _StartIconScale;
-                
+
+        if (IsVR)
+        {
+            if (IconTxtCanvas != null)
+                IconTxtCanvas.alpha = 0;
+
+            HoverIcon.transform.localScale = _StartIconScale;
+        }
+        else
+        {
+            HoverBackgroundObject.transform.localScale = Vector3.one;
+        }      
     }
 
     public void OnGazedOn()

@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class VRInteractible : MonoBehaviour
 {
 
+    public bool IsVR = true;
     public UnityEvent OnPointerEnter;
     public UnityEvent OnPointerExit;
     public UnityEvent OnPointerClick;

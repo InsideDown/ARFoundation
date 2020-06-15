@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 247903214}
   - component: {fileID: 247903215}
   - component: {fileID: 247903216}
+  - component: {fileID: 247903217}
   m_Layer: 5
   m_Name: CornerHolder
   m_TagString: Untagged
@@ -348,6 +349,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AnimSpeed: 1
+--- !u!225 &247903217
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247903213}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &375384615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -675,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500f1754be506474f8eff77a5d1f5c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BarsCanvasGroup: {fileID: 863890025}
+  BarsCanvasGroup: {fileID: 247903217}
   ArtsLogoCanvas: {fileID: 1157910152}
   BtnARTourCanvas: {fileID: 713942730}
   BtnVRTourCanvas: {fileID: 494336696}
@@ -1073,12 +1086,6 @@ RectTransform:
 --- !u!224 &863890022 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1866394256970298753, guid: b502ad019fc754ad69f00cb30b1eea34,
-    type: 3}
-  m_PrefabInstance: {fileID: 1866394256725696487}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &863890025 stripped
-CanvasGroup:
-  m_CorrespondingSourceObject: {fileID: 1866394256970298766, guid: b502ad019fc754ad69f00cb30b1eea34,
     type: 3}
   m_PrefabInstance: {fileID: 1866394256725696487}
   m_PrefabAsset: {fileID: 0}

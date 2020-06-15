@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 7002537717073326827}
   - component: {fileID: 7002537717073326805}
   - component: {fileID: 7002537717073326826}
+  - component: {fileID: 5655775194250784575}
   m_Layer: 10
   m_Name: VRHotspot
   m_TagString: Untagged
@@ -376,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20761a9fc74a145219c68af101a54bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsVR: 1
   OnPointerEnter:
     m_PersistentCalls:
       m_Calls:
@@ -411,3 +413,19 @@ MonoBehaviour:
   HoverIcon: {fileID: 7002537716755300415}
   IconTxt: {fileID: 8629725522037999120}
   IconTxtCanvas: {fileID: 6913589869239287617}
+--- !u!114 &5655775194250784575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7002537717073326824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ae5b3a8c4b549588cee2f46b58303e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemClickedStr: 
+  MethodToInvoke:
+    m_PersistentCalls:
+      m_Calls: []

@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class ARObject1Controller : MonoBehaviour
 {
-    public void OnGreenClick()
+   public void OnHotspotClick()
     {
-        Debug.Log("Green clicked");
-    }
-
-    public void OnRedClick()
-    {
-        Debug.Log("Red Clicked");
-    }
-
-    public void OnBlueClick()
-    {
-        Debug.Log("blue clicked");
+        EventManager.Instance.UIScreenOpenRequest();
     }
 }

@@ -61,7 +61,6 @@ public class UIScreenController : MonoBehaviour
 
     private void AnimUIScreenOut()
     {
-        Debug.Log("closing UI Screen");
         float rectWidth = _UIScreenHolderRectTransform.rect.width;
         if (_CurUIScreen.GetComponent<RectTransform>() != null)
         {
@@ -87,11 +86,19 @@ public class UIScreenController : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OnUIScreenClose += EventManager_OnUIScreenClose;
+        EventManager.OnUIScreenOpenRequest += EventManager_OnUIScreenOpenRequest;
     }
 
     private void OnDisable()
     {
         EventManager.OnUIScreenClose -= EventManager_OnUIScreenClose;
+        EventManager.OnUIScreenOpenRequest -= EventManager_OnUIScreenOpenRequest;
+    }
+
+    private void EventManager_OnUIScreenOpenRequest(string newScene)
+    {
+        Debug.Log("open UI screen");
+        OpenUIScreen();
     }
 
     private void EventManager_OnUIScreenClose(string newScene)

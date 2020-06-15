@@ -10,6 +10,7 @@ public class EventManager : Singleton<EventManager>
     public delegate void ScreenNavigateAction(string newScene);
     public static event ScreenNavigateAction OnLoadNewScene;
     //whenever one of our 2d screens are open
+    public static event ScreenNavigateAction OnUIScreenOpenRequest;
     public static event ScreenNavigateAction OnUIScreenOpen;
     public static event ScreenNavigateAction OnUIScreenClose;
     public static event ScreenNavigateAction OnUIScreenCloseComplete;
@@ -26,6 +27,11 @@ public class EventManager : Singleton<EventManager>
     public void LoadNewScene(string newScreen = "")
     {
         OnLoadNewScene?.Invoke(newScreen);
+    }
+
+    public void UIScreenOpenRequest(string newScreen = "")
+    {
+        OnUIScreenOpenRequest?.Invoke(newScreen);
     }
 
     public void UIScreenOpen(string newScreen = "")
