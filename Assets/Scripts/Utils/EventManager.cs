@@ -22,6 +22,10 @@ public class EventManager : Singleton<EventManager>
     public static event ARAction OnARPlacementAllowed;
     public static event ARAction OnARObjectPlaced;
 
+    public delegate void DataLoadAction();
+    public static event DataLoadAction OnMainDataLoaded;
+    public static event DataLoadAction OnMainDataLoadError;
+
 
 
     public void LoadNewScene(string newScreen = "")
@@ -62,5 +66,15 @@ public class EventManager : Singleton<EventManager>
     public void ARObjectPlaced()
     {
         OnARObjectPlaced?.Invoke();
+    }
+
+    public void MainDataLoaded()
+    {
+        OnMainDataLoaded?.Invoke();
+    }
+
+    public void MainDataLoadError()
+    {
+        OnMainDataLoadError?.Invoke();
     }
 }
