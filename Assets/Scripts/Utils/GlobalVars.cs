@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlobalVars : Singleton<GlobalVars>
 {
@@ -21,6 +22,12 @@ public class GlobalVars : Singleton<GlobalVars>
     public int[] IsSceneAudioPlayed = new int[] { 0, 0, 0, 0, 0 };
 
     public bool IsCardboard = false;
+
+    //public void CheckRequired(object obj, string nameStr, string scriptNameStr)
+    //{
+    //    if (obj == null)
+    //        throw new Exception(String.Format("A {0} is required in {1}", nameStr, scriptNameStr));
+    //}
 
     //[Serializable]
     //public struct SceneAudio
