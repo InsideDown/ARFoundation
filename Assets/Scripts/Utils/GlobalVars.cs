@@ -9,6 +9,12 @@ public class GlobalVars : Singleton<GlobalVars>
 
     protected GlobalVars() { }
 
+    private void Awake()
+    {
+        Debug.Log("target framerate: " + Application.targetFrameRate);
+        StartingFrameRate = Application.targetFrameRate;
+    }
+
     public enum CurrentScene
     {
         LobbyScene = 0,
@@ -22,6 +28,25 @@ public class GlobalVars : Singleton<GlobalVars>
     public int[] IsSceneAudioPlayed = new int[] { 0, 0, 0, 0, 0 };
 
     public bool IsCardboard = false;
+
+    private int StartingFrameRate = 30;
+
+    private int ScrollFrameRate = 60;
+
+    //TODO: need to check to see if Android has similar scrolling issues
+    public void ResetFrameRate()
+    {
+#if UNITY_IOS
+        Application.targetFrameRate = StartingFrameRate;
+#endif
+    }
+
+    public void SetScrollFrameRate()
+    {
+#if UNITY_IOS
+        Application.targetFrameRate = ScrollFrameRate;
+#endif
+    }
 
     //public void CheckRequired(object obj, string nameStr, string scriptNameStr)
     //{

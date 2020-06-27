@@ -26,6 +26,10 @@ public class EventManager : Singleton<EventManager>
     public static event DataLoadAction OnMainDataLoaded;
     public static event DataLoadAction OnMainDataLoadError;
 
+    public delegate void LoaderAction();
+    public static event LoaderAction OnShowLoader;
+    public static event LoaderAction OnHideLoader;
+    public static event LoaderAction OnLoadAnimOutComplete;
 
 
     public void LoadNewScene(string newScreen = "")
@@ -76,5 +80,20 @@ public class EventManager : Singleton<EventManager>
     public void MainDataLoadError()
     {
         OnMainDataLoadError?.Invoke();
+    }
+
+    public void ShowLoader()
+    {
+        OnShowLoader?.Invoke();
+    }
+
+    public void HideLoader()
+    {
+        OnHideLoader?.Invoke();
+    }
+
+    public void LoadAnimOutComplete()
+    {
+        OnLoadAnimOutComplete?.Invoke();
     }
 }
