@@ -13,7 +13,6 @@ public class GlobalVars : Singleton<GlobalVars>
 
     private void Awake()
     {
-        Debug.Log("target framerate: " + Application.targetFrameRate);
         StartingFrameRate = Application.targetFrameRate;
     }
 
@@ -39,7 +38,7 @@ public class GlobalVars : Singleton<GlobalVars>
     public void ResetFrameRate()
     {
         if (_IsApplicationQuitting) return;
-
+        Debug.Log("resetting frame rate");
 #if UNITY_IOS
         Application.targetFrameRate = StartingFrameRate;
 #endif
@@ -48,7 +47,7 @@ public class GlobalVars : Singleton<GlobalVars>
     public void SetScrollFrameRate()
     {
         if (_IsApplicationQuitting) return;
-
+        Debug.Log("setting frame rate");
 #if UNITY_IOS
         Application.targetFrameRate = ScrollFrameRate;
 #endif
