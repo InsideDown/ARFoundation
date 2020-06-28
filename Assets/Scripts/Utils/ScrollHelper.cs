@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ScrollHelper : MonoBehaviour
 {
-    private void OnEnable()
+    private void Awake()
     {
         //we need to speed up
         GlobalVars.Instance.SetScrollFrameRate();
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         //we need to slow down
         GlobalVars.Instance.ResetFrameRate();

@@ -9,6 +9,8 @@ public class GlobalVars : Singleton<GlobalVars>
 
     protected GlobalVars() { }
 
+    private bool _IsApplicationQuitting = false;
+
     private void Awake()
     {
         Debug.Log("target framerate: " + Application.targetFrameRate);
@@ -36,6 +38,8 @@ public class GlobalVars : Singleton<GlobalVars>
     //TODO: need to check to see if Android has similar scrolling issues
     public void ResetFrameRate()
     {
+        if (_IsApplicationQuitting) return;
+
 #if UNITY_IOS
         Application.targetFrameRate = StartingFrameRate;
 #endif
@@ -43,9 +47,16 @@ public class GlobalVars : Singleton<GlobalVars>
 
     public void SetScrollFrameRate()
     {
+        if (_IsApplicationQuitting) return;
+
 #if UNITY_IOS
         Application.targetFrameRate = ScrollFrameRate;
 #endif
+    }
+
+    private void OnApplicationQuit()
+    {
+        _IsApplicationQuitting = true;
     }
 
     //public void CheckRequired(object obj, string nameStr, string scriptNameStr)
