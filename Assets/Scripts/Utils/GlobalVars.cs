@@ -16,14 +16,14 @@ public class GlobalVars : Singleton<GlobalVars>
         StartingFrameRate = Application.targetFrameRate;
     }
 
-    public enum CurrentScene
-    {
-        LobbyScene = 0,
-        EmergencyDeptScene = 1,
-        ImagingScene = 2,
-        PatientRoomScene = 3,
-        RehabilitationScene = 4
-    }
+    //public enum CurrentScene
+    //{
+    //    LobbyScene = 0,
+    //    EmergencyDeptScene = 1,
+    //    ImagingScene = 2,
+    //    PatientRoomScene = 3,
+    //    RehabilitationScene = 4
+    //}
 
     //note, scene IDs need to align
     public int[] IsSceneAudioPlayed = new int[] { 0, 0, 0, 0, 0 };
