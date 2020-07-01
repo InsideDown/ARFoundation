@@ -8,7 +8,8 @@ public class CarouselController : MonoBehaviour
     //TODO: This list will come from JSON eventually; just adding to try it out
     public int CarouselItemCount = 0;
     public GameObject CarouselItemHolder;
-    public CarouselItem CarouselItemPrefab; 
+    public CarouselItem CarouselItemPrefab;
+    public CarouselSwipe CarouselSwipe;
 
     private void Awake()
     {
@@ -19,11 +20,15 @@ public class CarouselController : MonoBehaviour
         if (CarouselItemPrefab == null)
             throw new System.Exception("A CarouselItemPrefab must be populated in CarouselController");
 
+        if (CarouselSwipe == null)
+            throw new System.Exception("A CarouselSwipe must be populated in CarouselController");
+
     }
 
     private void Start()
     {
         InitCarousel();
+        CarouselSwipe.InitCarousel(CarouselItemCount);
     }
 
     private void InitCarousel()
@@ -34,9 +39,6 @@ public class CarouselController : MonoBehaviour
             CarouselItem curCarouselItem = Instantiate(CarouselItemPrefab, CarouselItemHolder.transform, false) as CarouselItem;
             curCarouselItem.Init(i+1);
         }
-
-
-
         //EventManager.Instance.ARObjectPlaced();
         //Instantiate(ObjectToPlacePrefab, _PlacementPose.position, _PlacementPose.rotation, PlacedObjectHolder.transform);
         //DisablePlacementIndicator();

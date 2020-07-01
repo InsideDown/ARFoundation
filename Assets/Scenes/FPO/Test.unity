@@ -154,6 +154,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2773484632407361359, guid: 0ade4706986a14edbba269b10b26d416,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000015291685
+      objectReference: {fileID: 0}
+    - target: {fileID: 3114147921609534065, guid: 0ade4706986a14edbba269b10b26d416,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6102771867296318636, guid: 0ade4706986a14edbba269b10b26d416,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -258,6 +268,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382326636442631126, guid: 0ade4706986a14edbba269b10b26d416,
+        type: 3}
+      propertyPath: CarouselSwipe
+      value: 
+      objectReference: {fileID: 764579560}
+    - target: {fileID: 7631253695065478688, guid: 0ade4706986a14edbba269b10b26d416,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ade4706986a14edbba269b10b26d416, type: 3}
@@ -588,6 +608,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653276425}
   m_CullTransparentMesh: 0
+--- !u!1 &764579558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3013194645384219656, guid: 0ade4706986a14edbba269b10b26d416,
+    type: 3}
+  m_PrefabInstance: {fileID: 405838629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &764579560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764579558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc91e8d27c2fb4adeaaaf53fa24b9d2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwipeThreshold: 0.2
 --- !u!1 &914809772
 GameObject:
   m_ObjectHideFlags: 0

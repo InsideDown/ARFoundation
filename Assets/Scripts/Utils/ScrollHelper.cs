@@ -20,13 +20,6 @@ public class ScrollHelper : MonoBehaviour
     {
         //we need to speed up
         GlobalVars.Instance.SetScrollFrameRate();
-        StartCoroutine(Delay());
-    }
-
-    private IEnumerator Delay()
-    {
-        yield return new WaitForEndOfFrame();
-        SetScrollSize();
     }
 
     private void OnDestroy()
@@ -40,17 +33,17 @@ public class ScrollHelper : MonoBehaviour
     /// due to how Unity sets up its scrolling, we need to find the heights of all of the direct decendants
     /// of our ScrollHolder and set ScrollHolder's height to those values combined
     /// </summary>
-    private void SetScrollSize()
-    {
-        float rectHolderHeight = ScrollHolder.rect.height;
-        Debug.Log(rectHolderHeight);
-        foreach (Transform child in ScrollHolder.transform)
-        {
-            RectTransform curRect = child.GetComponent<RectTransform>();
-            if (curRect != null)
-                Debug.Log(curRect.rect.height);
-        }
-    }
+    //private void SetScrollSize()
+    //{
+    //    float rectHolderHeight = ScrollHolder.rect.height;
+    //    Debug.Log(rectHolderHeight);
+    //    foreach (Transform child in ScrollHolder.transform)
+    //    {
+    //        RectTransform curRect = child.GetComponent<RectTransform>();
+    //        if (curRect != null)
+    //            Debug.Log(curRect.rect.height);
+    //    }
+    //}
 
     private void OnApplicationQuit()
     {
